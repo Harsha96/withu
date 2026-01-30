@@ -27,7 +27,7 @@ export default function ProgramsPage({ onNavigate }: HomePageProps) {
       title: 'Cultural Activities',
       description: 'Immerse yourself in Korean culture through hands-on experiences, traditional activities, and local exploration.',
       features: [
-        'Traditional Korean cooking classes',
+        'Traditional Korean cooking ',
         'Hanbok wearing experiences',
         'Temple visits and cultural tours',
         'K-pop dance workshops',
@@ -63,8 +63,7 @@ export default function ProgramsPage({ onNavigate }: HomePageProps) {
         'Board game nights',
         'Movie screenings',
         'Sports activities',
-        'Conversation exchange partners',
-      ],
+        'Cultural exchange events'],
       schedule: 'Multiple events weekly',
       color: 'from-green-500 to-green-600',
       iconBg: 'bg-green-100 text-green-600',
@@ -76,7 +75,6 @@ export default function ProgramsPage({ onNavigate }: HomePageProps) {
       features: [
         'Hospital and clinic recommendations',
         'Medical interpretation assistance',
-        'Health insurance guidance',
         'Emergency contact information',
         'Dental clinic referrals',
         'Prescription assistance',
