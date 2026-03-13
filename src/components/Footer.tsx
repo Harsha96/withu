@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Heart } from 'lucide-react';
+import { MapPin, Phone, Mail, Heart, Instagram } from 'lucide-react';
 import logo from '../assets/logo.webp'; 
 
 export default function Footer() {
@@ -35,13 +35,27 @@ export default function Footer() {
                   Dong-gu, Daejeon, South Korea
                 </p>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone size={18} className="text-orange-500 flex-shrink-0" />
-                <p className="text-sm">+82-42-XXX-XXXX</p>
+              <div className="flex items-start space-x-3">
+                <Phone size={18} className="text-orange-500 flex-shrink-0 mt-1" />
+                <p className="text-sm">
+                  Daniel-01072521440<br />
+                  paula-01072401450
+                </p>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail size={18} className="text-orange-500 flex-shrink-0" />
-                <p className="text-sm">info@withu-center.org</p>
+                <p className="text-sm">daniyoon1112@gmail.com</p>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Instagram size={18} className="text-orange-500 flex-shrink-0" />
+                <a
+                  href="https://instagram.com/with_u_center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm hover:text-orange-400 transition-colors"
+                >
+                  @with_u_center
+                </a>
               </div>
             </div>
           </div>

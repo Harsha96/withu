@@ -1,4 +1,5 @@
 import { Quote } from 'lucide-react';
+import InstagramFeed from '../components/InstagramFeed';
 import koranclass from '../assets/korean_class.jpg';
 import cultre from '../assets/culture.jpg';
 import party from '../assets/party.jpg';
@@ -166,6 +167,20 @@ export default function GalleryPage({ onNavigate }: HomePageProps) {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Instagram Stories
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+              Follow us @with_u_center for daily updates and cultural insights
+            </p>
+            <InstagramFeed />
           </div>
         </div>
       </section>

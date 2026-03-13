@@ -1,4 +1,5 @@
-import { BookOpen, Globe, Music, Users, Stethoscope, MessageCircle, ArrowRight, Church } from 'lucide-react';
+import { BookOpen, Globe, Users, Stethoscope, ArrowRight } from 'lucide-react';
+import InstagramFeed from '../components/InstagramFeed';
 import bgImage from '../assets/bg.webp';
 
 type Page = 'home' | 'about' | 'programs' | 'gallery' | 'contact';
@@ -22,12 +23,6 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       color: 'bg-orange-100 text-orange-600',
     },
     {
-      icon: Church,
-      title: 'Sunday Service & Fellowship',
-      description: 'A welcoming Sunday gathering where Korean and international Christian music unite hearts in worship and fellowship.',
-      color: 'bg-purple-100 text-purple-600',
-    },
-    {
       icon: Users,
       title: 'International Friendships',
       description: 'Build lasting connections with students from around the world.',
@@ -38,12 +33,6 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       title: 'Medical & Dental Guidance',
       description: 'Get support navigating healthcare services and finding trusted providers.',
       color: 'bg-red-100 text-red-600',
-    },
-    {
-      icon: MessageCircle,
-      title: 'Professional Counseling',
-      description: 'Access confidential support for personal, academic, and cultural adjustment challenges.',
-      color: 'bg-teal-100 text-teal-600',
     },
   ];
 
@@ -130,23 +119,41 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Community Highlights
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+              See what's happening at WithU Center on Instagram
+            </p>
+            <InstagramFeed />
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Ready to Join Our Community?
-            </h2>
-            <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-              Whether you're new to Korea or looking to expand your social circle,
-              we're here to welcome you with open arms.
-            </p>
-            <button
-              onClick={() => onNavigate('contact')}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center gap-2 group"
-            >
-              Get Started Today
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 text-center md:text-left md:flex items-center justify-between">
+            <div className="md:max-w-2xl">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Ready to Join Our Community?
+              </h2>
+              <p className="text-lg text-gray-700 mb-8 max-w-2xl">
+                Whether you're new to Korea or looking to expand your social circle,
+                we're here to welcome you with open arms.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={() => onNavigate('contact')}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center justify-center gap-2 group"
+                >
+                  Get Started Today
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>

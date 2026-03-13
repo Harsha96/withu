@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, Instagram } from 'lucide-react';
 import { useState } from 'react';
 
 export default function ContactPage() {
@@ -71,7 +71,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Call Us</h3>
-                    <p className="text-gray-700">+82-42-XXX-XXXX</p>
+                    <p className="text-gray-700">
+                      Daniel-01072521440<br />
+                      paula-01072401450
+                    </p>
                   </div>
                 </div>
 
@@ -81,7 +84,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email Us</h3>
-                    <p className="text-gray-700">info@withu-center.org</p>
+                    <p className="text-gray-700">daniyoon1112@gmail.com</p>
                   </div>
                 </div>
 
@@ -92,10 +95,26 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Office Hours</h3>
                     <p className="text-gray-700">
-                      Monday - Friday: 9:00 AM - 6:00 PM<br />
-                      Saturday: 10:00 AM - 4:00 PM<br />
+                      Monday - Friday: 10:00 AM - 6:00 PM<br />
                       Sunday: Closed
                     </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-pink-100 p-3 rounded-lg">
+                    <Instagram className="text-pink-600" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-1">Instagram</h3>
+                    <a
+                      href="https://instagram.com/with_u_center"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-700 transition-colors"
+                    >
+                      @with_u_center
+                    </a>
                   </div>
                 </div>
               </div>

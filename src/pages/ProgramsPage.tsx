@@ -1,4 +1,4 @@
-import { BookOpen, Globe, Music, Users, Stethoscope, MessageCircle, Calendar, Clock, ArrowRight, Church } from 'lucide-react';
+import { BookOpen, Globe, Users, Stethoscope, MessageCircle, Calendar, ArrowRight } from 'lucide-react';
 type Page = 'home' | 'about' | 'programs' | 'gallery' | 'contact';
 
 interface HomePageProps {
@@ -39,21 +39,6 @@ export default function ProgramsPage({ onNavigate }: HomePageProps) {
       iconBg: 'bg-orange-100 text-orange-600',
     },
     {
-      icon: Church,
-      title: 'Sunday Service & Fellowship',
-      description: 'Discover the joy of music through worship and community featuring global Christian songs, group singing, and cultural music appreciation.',
-      features: [
-        'Group worship & singing',
-        'International sacred music',
-        'Fellowship & spiritual connection',
-        'Performance in service settings',
-        'Inclusive, supportive environment',
-      ],
-      schedule: 'Sunday, Everyone welcome',
-      color: 'from-purple-500 to-purple-600',
-      iconBg: 'bg-purple-100 text-purple-600',
-    },
-    {
       icon: Users,
       title: 'Social Meetups',
       description: 'Build lasting friendships through regular social gatherings, game nights, and community events.',
@@ -74,10 +59,9 @@ export default function ProgramsPage({ onNavigate }: HomePageProps) {
       description: 'Navigate the Korean healthcare system with confidence through our comprehensive medical support services.',
       features: [
         'Hospital and clinic recommendations',
-        'Medical interpretation assistance',
+        'Interpretation',
         'Emergency contact information',
-        'Dental clinic referrals',
-        'Prescription assistance',
+        'Free dental services',
       ],
       schedule: 'By appointment, Emergency support available',
       color: 'from-red-500 to-red-600',

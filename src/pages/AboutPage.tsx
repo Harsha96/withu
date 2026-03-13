@@ -65,7 +65,7 @@ export default function AboutPage() {
                   Located in the heart of Daejeon, our center has grown from a small gathering
                   of volunteers into a thriving non-profit organization serving hundreds of
                   international students each year. Through free Korean language classes, cultural
-                  activities, counseling services, and social events, we've helped countless students
+                  activities, and social events, we've helped countless students
                   build confidence, make lasting friendships, and truly feel at home in Korea.
                 </p>
               </div>
