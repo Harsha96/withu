@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Quote, Camera } from 'lucide-react';
 import InstagramFeed from '../components/InstagramFeed';
 import { useNavigate } from 'react-router-dom';
@@ -7,76 +7,52 @@ export default function GalleryPage() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('Dental');
 
+  // Use Vite's glob import to get all image URLs from the assets folder
+  // This ensures they are correctly bundled and resolved in production
+  const imageModules = import.meta.glob('/src/assets/**/*.{jpg,jpeg,png,JPG,PNG,webp}', {
+    eager: true,
+    as: 'url',
+  });
+
+  const getImagesByFolder = (folderName: string) => {
+    return Object.entries(imageModules)
+      .filter(([path]) => path.includes(`/assets/${folderName}/`))
+      .map(([_, url]) => url);
+  };
+
   const galleryTabs = [
     {
       id: 'Dental',
       title: 'Free Dental & Medical',
       description: 'Navigating the Korean healthcare system with confidence through our comprehensive medical support services.',
-      images: [
-        '/src/assets/Free Dental & Medical Clinics/치과진료.jpg',
-        '/src/assets/Free Dental & Medical Clinics/무료한방진료.jpg',
-        '/src/assets/Free Dental & Medical Clinics/KakaoTalk_20221011_195512726_01.jpg',
-        '/src/assets/Free Dental & Medical Clinics/KakaoTalk_20221222_175331420.jpg',
-        '/src/assets/Free Dental & Medical Clinics/KakaoTalk_20221222_175331420_03.jpg',
-        '/src/assets/Free Dental & Medical Clinics/KakaoTalk_20231111_071523260_02.jpg',
-        '/src/assets/Free Dental & Medical Clinics/KakaoTalk_20250715_145731538_01.jpg',
-      ]
+      images: getImagesByFolder('Free Dental & Medical Clinics')
     },
     {
       id: 'Korean',
       title: 'Korean Classes',
       description: 'Students learning Korean with native teachers to help them integrate into Korean society.',
-      images: [
-        '/src/assets/Free Korean classes/한국어.jpg',
-        '/src/assets/Free Korean classes/한.jpg',
-        '/src/assets/Free Korean classes/최창혁 목수진 반.jpg',
-        '/src/assets/Free Korean classes/KakaoTalk_20201109_235858336_01.jpg',
-        '/src/assets/Free Korean classes/KakaoTalk_20220330_195849661_01.jpg',
-        '/src/assets/Free Korean classes/윤경호반.png',
-      ]
+      images: getImagesByFolder('Free Korean classes')
     },
     {
       id: 'Culture',
       title: 'Culture Exchange',
       description: 'Immerse yourself in Korean culture through hands-on experiences and local exploration.',
       images: [
-        '/src/assets/Introduction to Korean culture/추석송편만들기.jpg',
-        '/src/assets/Introduction to Korean culture/추석파티 한복.jpg',
-        '/src/assets/Introduction to Korean culture/시낭송대회 참가.jpg',
-        '/src/assets/Introduction to Korean culture/KakaoTalk_20230923_211449793_23.jpg',
-        '/src/assets/Introduction to Korean culture/KakaoTalk_20230923_212715012_27.jpg',
-        '/src/assets/Int\'l Culture Exchange/Bangladesh Night.jpg',
-        '/src/assets/Int\'l Culture Exchange/Int\'l Night.JPG',
-        '/src/assets/Int\'l Culture Exchange/음악회 .jpg',
+        ...getImagesByFolder('Introduction to Korean culture'),
+        ...getImagesByFolder('Int\'l Culture Exchange')
       ]
     },
     {
       id: 'Outings',
       title: 'Outings & Trips',
       description: 'Fun, memorable experiences beyond the classroom exploring the beauty of Korea.',
-      images: [
-        '/src/assets/Outings/장태산 여행.jpg',
-        '/src/assets/Outings/전주 한옥마을.jpg',
-        '/src/assets/Outings/벚꽃구경.jpg',
-        '/src/assets/Outings/Mt. Sikjang.jpg',
-        '/src/assets/Outings/Cherry Blossom.jpg',
-        '/src/assets/Outings/Geumsan Ginseng Hall.jpg',
-        '/src/assets/Outings/Independance Hall.jpg',
-        '/src/assets/Outings/Jeonju Hanok Village.jpg',
-      ]
+      images: getImagesByFolder('Outings')
     },
     {
       id: 'Parties',
       title: 'Social & Parties',
       description: 'Build lasting friendships through regular social gatherings, game nights, and community events.',
-      images: [
-        '/src/assets/Parties/Christmas Party.jpg',
-        '/src/assets/Parties/Easter party.jpg',
-        '/src/assets/Parties/Opening Party.jpg',
-        '/src/assets/Parties/Stackimg Cups.jpg',
-        '/src/assets/Parties/Stress relief.jpg',
-        '/src/assets/Parties/Games.jpg',
-      ]
+      images: getImagesByFolder('Parties')
     }
   ];
 
