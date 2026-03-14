@@ -76,10 +76,7 @@ export default function AboutPage() {
                 alt="International students studying together"
                 className="rounded-2xl shadow-xl w-full"
               />
-              <div className="absolute -bottom-6 -left-6 bg-orange-500 text-white p-6 rounded-xl shadow-lg max-w-xs">
-                <p className="font-semibold text-lg">Serving students since 2015</p>
-                <p className="text-sm text-orange-100 mt-1">Over 2,000 students supported</p>
-              </div>
+
             </div>
           </div>
         </div>
