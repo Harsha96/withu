@@ -70,13 +70,14 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="relative">
-              <img
-                src="https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="International students studying together"
-                className="rounded-2xl shadow-xl w-full"
-              />
-
+            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-gray-100">
+              <iframe
+                src="https://www.youtube.com/embed/UUz-jiO-tj4"
+                title="WithU International Culture Center Story"
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
         </div>

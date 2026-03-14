@@ -1,28 +1,31 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.webp'; 
-type Page = 'home' | 'about' | 'programs' | 'gallery' | 'contact';
 
-interface HeaderProps {
-  currentPage: Page;
-  onNavigate: (page: Page) => void;
-}
-
-export default function Header({ currentPage, onNavigate }: HeaderProps) {
+export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navItems = [
-    { id: 'home' as Page, label: 'Home' },
-    { id: 'about' as Page, label: 'About Us' },
-    { id: 'programs' as Page, label: 'Programs' },
-    { id: 'gallery' as Page, label: 'Gallery' },
-    { id: 'contact' as Page, label: 'Contact' },
+    { id: 'home', path: '/', label: 'Home' },
+    { id: 'about', path: '/about', label: 'About Us' },
+    { id: 'programs', path: '/programs', label: 'Programs' },
+    { id: 'gallery', path: '/gallery', label: 'Gallery' },
+    { id: 'contact', path: '/contact', label: 'Contact' },
   ];
 
-  const handleNavClick = (page: Page) => {
-    onNavigate(page);
+  const handleNavClick = (path: string) => {
+    navigate(path);
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const isActive = (path: string) => {
+    if (path === '/' && location.pathname === '/') return true;
+    if (path !== '/' && location.pathname.startsWith(path)) return true;
+    return false;
   };
 
   return (
@@ -30,32 +33,25 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <button
-            onClick={() => handleNavClick('home')}
+            onClick={() => handleNavClick('/')}
             className="flex items-center space-x-3 group"
           >
-            {/* <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center transform group-hover:scale-105 transition-transform">
-              <span className="text-white font-bold text-xl">W</span>
-            </div> */}
             <img src={logo} alt="Logo" className="w-18 h-14 object-contain" />
-            {/* <div className="text-left">
-              <div className="font-bold text-xl text-blue-900">WithU</div>
-              <div className="text-xs text-gray-600">International Culture Center</div>
-            </div> */}
           </button>
 
           <nav className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => handleNavClick(item.id)}
+                onClick={() => handleNavClick(item.path)}
                 className={`font-medium transition-colors relative ${
-                  currentPage === item.id
+                  isActive(item.path)
                     ? 'text-blue-600'
                     : 'text-gray-700 hover:text-blue-600'
                 }`}
               >
                 {item.label}
-                {currentPage === item.id && (
+                {isActive(item.path) && (
                   <span className="absolute -bottom-6 left-0 right-0 h-1 bg-blue-600 rounded-full" />
                 )}
               </button>
@@ -77,9 +73,9 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => handleNavClick(item.id)}
+                onClick={() => handleNavClick(item.path)}
                 className={`block w-full text-left px-4 py-3 rounded-lg font-medium transition-colors ${
-                  currentPage === item.id
+                  isActive(item.path)
                     ? 'bg-blue-50 text-blue-600'
                     : 'text-gray-700 hover:bg-gray-50'
                 }`}

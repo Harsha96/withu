@@ -1,14 +1,9 @@
 import { BookOpen, Globe, Users, Stethoscope, ArrowRight } from 'lucide-react';
-import InstagramFeed from '../components/InstagramFeed';
+import { useNavigate } from 'react-router-dom';
 import bgImage from '../assets/bg.webp';
 
-type Page = 'home' | 'about' | 'programs' | 'gallery' | 'contact';
-
-interface HomePageProps {
-  onNavigate: (page: Page) => void;
-}
-
-export default function HomePage({ onNavigate }: HomePageProps) {
+export default function HomePage() {
+  const navigate = useNavigate();
   const services = [
     {
       icon: BookOpen,
@@ -57,14 +52,14 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                onClick={() => onNavigate('programs')}
+                onClick={() => navigate('/programs')}
                 className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center gap-2 group"
               >
                 See our Programs
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
               <button
-                onClick={() => onNavigate('contact')}
+                onClick={() => navigate('/contact')}
                 className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors border-2 border-white/30"
               >
                 Contact Us
@@ -88,7 +83,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {services.map((service, index) => (
               <div
                 key={index}
@@ -109,7 +104,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
           <div className="text-center mt-12">
             <button
-              onClick={() => onNavigate('programs')}
+              onClick={() => navigate('/programs')}
               className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-lg group"
             >
               Explore All Programs
@@ -133,7 +128,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
-                  onClick={() => onNavigate('contact')}
+                  onClick={() => navigate('/contact')}
                   className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center justify-center gap-2 group"
                 >
                   Get Started Today

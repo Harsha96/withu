@@ -1,49 +1,83 @@
-import { Quote } from 'lucide-react';
+import React, { useState } from 'react';
+import { Quote, Camera } from 'lucide-react';
 import InstagramFeed from '../components/InstagramFeed';
-import koranclass from '../assets/korean_class.jpg';
-import cultre from '../assets/culture.jpg';
-import party from '../assets/party.jpg';
-import dentail from '../assets/dentail.jpg';
-import outings from '../assets/outings.jpg';
-import lec from '../assets/lec.jpg';
-type Page = 'home' | 'about' | 'programs' | 'gallery' | 'contact';
+import { useNavigate } from 'react-router-dom';
 
-interface HomePageProps {
-  onNavigate: (page: Page) => void;
-}
-export default function GalleryPage({ onNavigate }: HomePageProps) {
-  const galleryImages = [
+export default function GalleryPage() {
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('Dental');
+
+  const galleryTabs = [
     {
-      url: koranclass,
-      title: 'Korean Language Class',
-      description: 'Students learning Korean with native teachers',
+      id: 'Dental',
+      title: 'Free Dental & Medical',
+      description: 'Navigating the Korean healthcare system with confidence through our comprehensive medical support services.',
+      images: [
+        '/src/assets/Free Dental & Medical Clinics/치과진료.jpg',
+        '/src/assets/Free Dental & Medical Clinics/무료한방진료.jpg',
+        '/src/assets/Free Dental & Medical Clinics/KakaoTalk_20221011_195512726_01.jpg',
+        '/src/assets/Free Dental & Medical Clinics/KakaoTalk_20221222_175331420.jpg',
+        '/src/assets/Free Dental & Medical Clinics/KakaoTalk_20221222_175331420_03.jpg',
+        '/src/assets/Free Dental & Medical Clinics/KakaoTalk_20231111_071523260_02.jpg',
+        '/src/assets/Free Dental & Medical Clinics/KakaoTalk_20250715_145731538_01.jpg',
+      ]
     },
     {
-      url: cultre,
-      title: 'Cultural Activities',
-      description: 'Immerse yourself in Korean culture through hands-on experiences, traditional activities, and local exploration.',
+      id: 'Korean',
+      title: 'Korean Classes',
+      description: 'Students learning Korean with native teachers to help them integrate into Korean society.',
+      images: [
+        '/src/assets/Free Korean classes/한국어.jpg',
+        '/src/assets/Free Korean classes/한.jpg',
+        '/src/assets/Free Korean classes/최창혁 목수진 반.jpg',
+        '/src/assets/Free Korean classes/KakaoTalk_20201109_235858336_01.jpg',
+        '/src/assets/Free Korean classes/KakaoTalk_20220330_195849661_01.jpg',
+        '/src/assets/Free Korean classes/윤경호반.png',
+      ]
     },
     {
-      url: party,
-      title: 'Social Meetups',
+      id: 'Culture',
+      title: 'Culture Exchange',
+      description: 'Immerse yourself in Korean culture through hands-on experiences and local exploration.',
+      images: [
+        '/src/assets/Introduction to Korean culture/추석송편만들기.jpg',
+        '/src/assets/Introduction to Korean culture/추석파티 한복.jpg',
+        '/src/assets/Introduction to Korean culture/시낭송대회 참가.jpg',
+        '/src/assets/Introduction to Korean culture/KakaoTalk_20230923_211449793_23.jpg',
+        '/src/assets/Introduction to Korean culture/KakaoTalk_20230923_212715012_27.jpg',
+        '/src/assets/Int\'l Culture Exchange/Bangladesh Night.jpg',
+        '/src/assets/Int\'l Culture Exchange/Int\'l Night.JPG',
+        '/src/assets/Int\'l Culture Exchange/음악회 .jpg',
+      ]
+    },
+    {
+      id: 'Outings',
+      title: 'Outings & Trips',
+      description: 'Fun, memorable experiences beyond the classroom exploring the beauty of Korea.',
+      images: [
+        '/src/assets/Outings/장태산 여행.jpg',
+        '/src/assets/Outings/전주 한옥마을.jpg',
+        '/src/assets/Outings/벚꽃구경.jpg',
+        '/src/assets/Outings/Mt. Sikjang.jpg',
+        '/src/assets/Outings/Cherry Blossom.jpg',
+        '/src/assets/Outings/Geumsan Ginseng Hall.jpg',
+        '/src/assets/Outings/Independance Hall.jpg',
+        '/src/assets/Outings/Jeonju Hanok Village.jpg',
+      ]
+    },
+    {
+      id: 'Parties',
+      title: 'Social & Parties',
       description: 'Build lasting friendships through regular social gatherings, game nights, and community events.',
-    },
-    {
-      url: dentail,
-      title: 'Medical & Dental Guidance',
-      description: 'Navigate the Korean healthcare system with confidence through our comprehensive medical support services.',
-    },
-    {
-      url: outings,
-      title: 'Outings',
-      description: 'Fun, memorable experiences beyond the classroom.',
-    },
-    {
-      url: lec,
-      title: 'Special Lectures',
-      description: 'Expert-led sessions on Korean culture, history, and life in Korea and important topics.',
-    },
- 
+      images: [
+        '/src/assets/Parties/Christmas Party.jpg',
+        '/src/assets/Parties/Easter party.jpg',
+        '/src/assets/Parties/Opening Party.jpg',
+        '/src/assets/Parties/Stackimg Cups.jpg',
+        '/src/assets/Parties/Stress relief.jpg',
+        '/src/assets/Parties/Games.jpg',
+      ]
+    }
   ];
 
   const testimonials = [
@@ -85,6 +119,8 @@ export default function GalleryPage({ onNavigate }: HomePageProps) {
     },
   ];
 
+  const activeTabData = galleryTabs.find(tab => tab.id === activeTab);
+
   return (
     <div>
       <section className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16 md:py-24">
@@ -110,26 +146,50 @@ export default function GalleryPage({ onNavigate }: HomePageProps) {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryImages.map((image, index) => (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-shadow"
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {galleryTabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-6 py-2 rounded-full font-semibold transition-all ${
+                  activeTab === tab.id
+                    ? 'bg-blue-600 text-white shadow-lg scale-105'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
               >
-                <img
-                  src={image.url}
-                  alt={image.title}
-                  className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-xl font-semibold mb-1">{image.title}</h3>
-                    <p className="text-sm text-gray-200">{image.description}</p>
-                  </div>
-                </div>
-              </div>
+                {tab.title}
+              </button>
             ))}
           </div>
+
+          {activeTabData && (
+            <div className="animate-fadeIn">
+              <div className="mb-12 text-center max-w-3xl mx-auto">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{activeTabData.title}</h3>
+                <p className="text-gray-600">{activeTabData.description}</p>
+              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {activeTabData.images.map((image, index) => (
+                  <div
+                    key={index}
+                    className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+                  >
+                    <img
+                      src={image}
+                      alt={`${activeTabData.title} ${index + 1}`}
+                      className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="bg-white/90 backdrop-blur-sm p-4 rounded-full opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">
+                        <Camera className="text-blue-600 mb-1 mx-auto" size={24} />
+                        <span className="text-blue-600 font-bold text-xs">View Full Image</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -194,7 +254,7 @@ export default function GalleryPage({ onNavigate }: HomePageProps) {
             Join our growing community of international students who have found friendship,
             support, and a true home away from home at WithU Center.
           </p>
-          <button onClick={() => onNavigate('contact')} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+          <button onClick={() => navigate('/contact')} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
             Join Our Community
           </button>
         </div>

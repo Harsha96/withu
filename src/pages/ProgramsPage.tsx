@@ -1,10 +1,8 @@
 import { BookOpen, Globe, Users, Stethoscope, MessageCircle, Calendar, ArrowRight } from 'lucide-react';
-type Page = 'home' | 'about' | 'programs' | 'gallery' | 'contact';
+import { useNavigate } from 'react-router-dom';
 
-interface HomePageProps {
-  onNavigate: (page: Page) => void;
-}
-export default function ProgramsPage({ onNavigate }: HomePageProps) {
+export default function ProgramsPage() {
+  const navigate = useNavigate();
   const programs = [
     {
       icon: BookOpen,
@@ -135,12 +133,12 @@ export default function ProgramsPage({ onNavigate }: HomePageProps) {
                       ))}
                     </ul>
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <button           onClick={() => onNavigate('contact')}
+                      <button           onClick={() => navigate('/contact')}
  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center gap-2 group">
                         Ask for Details
                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                       </button>
-                      <button onClick={() => onNavigate('gallery')} className="border-2 border-gray-300 hover:border-blue-600 text-gray-700 hover:text-blue-600 px-6 py-3 rounded-lg font-semibold transition-colors">
+                      <button onClick={() => navigate('/gallery')} className="border-2 border-gray-300 hover:border-blue-600 text-gray-700 hover:text-blue-600 px-6 py-3 rounded-lg font-semibold transition-colors">
                         See more..
                       </button>
                     </div>
@@ -166,7 +164,7 @@ export default function ProgramsPage({ onNavigate }: HomePageProps) {
                 </p>
               </div>
               <div className="md:w-1/3 text-center md:text-right">
-                <button   onClick={() => onNavigate('contact')} className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center gap-2 group">
+                <button   onClick={() => navigate('/contact')} className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center gap-2 group">
                   Contact Us
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
